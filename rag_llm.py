@@ -3,7 +3,6 @@ from preprocess_data import get_embedding, preprocess_data
 from pymilvus import FieldSchema, CollectionSchema, DataType, MilvusClient
 from transformers import AutoTokenizer, AutoModel
 from dotenv import load_dotenv
-
 from openai import OpenAI
 
 openai_client = OpenAI()
@@ -67,8 +66,6 @@ def search_constitution(query_text):
 	context = "\n".join(
 		[line_with_distance for line_with_distance in retrieved_lines]
 	)
-     
-	print(context)
 
 	SYSTEM_PROMPT = """
 	사람: You are an AI assistant. You are able to find answers to the questions from the contextual passage snippets provided.
@@ -102,7 +99,7 @@ interface = gr.Interface(
     ),  
     examples=[
         "헌법 제 23조 법률의 항목이 뭐야?",
-        "헌법 제 46조는 무엇인가요?",
+        "헌법 제 50조는 무엇인가요?",
         "헌법 제 69조는 어떤 내용을 담고 있나요?"
     ],
     outputs="text",
