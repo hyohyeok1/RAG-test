@@ -65,8 +65,10 @@ def search_constitution(query_text):
 	]
 
 	context = "\n".join(
-		[line_with_distance[0] for line_with_distance in retrieved_lines]
+		[line_with_distance for line_with_distance in retrieved_lines]
 	)
+     
+	print(context)
 
 	SYSTEM_PROMPT = """
 	사람: You are an AI assistant. You are able to find answers to the questions from the contextual passage snippets provided.
